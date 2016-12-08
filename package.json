@@ -1,0 +1,30 @@
+{
+  "name": "doubly_linked_list",
+  "version": "1.0.0",
+  "description": "Circular Doubly linked list implementation",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "list",
+    "linked list",
+    "data structure",
+    "Array"
+  ],
+  "author": "Moussa Ndour <moussa_ndour@hotmail.fr>",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sidsonAidson/doubly_linked_list.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sidsonAidson/doubly_linked_list/issues"
+  },
+  "homepage": "https://github.com/sidsonAidson/doubly_linked_list#readme"
+}
