@@ -6,8 +6,9 @@ The principle of a doubly-linked list is to keep for each element of the list a 
 
 <a href="http://sidsonaidson.github.io/doubly_linked_list/">CDLinkedList</a>
 
-<img src="">
+
 ![alt tag](https://raw.githubusercontent.com/sidsonAidson/doubly_linked_list/master/img/img2.png)
+
 
 In this implementation we create special element, which will be the root of our list (also called sentinel).
 <a href="https://en.wikipedia.org/wiki/Sentinel_node">Sentinel on wikiPedia</a>
@@ -347,3 +348,4 @@ a.log()//List <'Hello', 3, 2, {}>
 
 ###.log()
 + print list on stdout
+
