@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Doubly linked list by sidsonAidson</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Doubly linked list</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/sidsonAidson/doubly_linked_list" class="btn">View on GitHub</a>
+      <a href="https://github.com/sidsonAidson/doubly_linked_list/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/sidsonAidson/doubly_linked_list/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="doubly_linked_list---iterable-circular-doubly-linked-list-implementation" class="anchor" href="#doubly_linked_list---iterable-circular-doubly-linked-list-implementation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>doubly_linked_list - Iterable Circular Doubly linked list implementation</h1>
+
+<p>Iterable Circular Doubly linked list implementation.
+The principle of a doubly-linked list is to keep for each element of the list a pointer to the previous element and to the next element.</p>
+
+<p><a href="http://sidsonaidson.github.io/doubly_linked_list/">CDLinkedList</a></p>
+
+<p><img src="">
+<img src="https://raw.githubusercontent.com/sidsonAidson/doubly_linked_list/master/img/img2.png" alt="alt tag"></p>
+
+<p>In this implementation we create special element, which will be the root of our list (also called sentinel).
+<a href="https://en.wikipedia.org/wiki/Sentinel_node">Sentinel on wikiPedia</a></p>
+
+<p>This element will be both before the first element and after the last element. It is he who will allow us to quietly manipulate the list without risking anything.</p>
+
+<p><img src="https://raw.githubusercontent.com/sidsonAidson/doubly_linked_list/master/img/img1.png" alt="alt tag"></p>
+
+<p>In addition we have another element called "cursor" which a virtual element placed between two cells (an element of the chain), either between the first cell and the sentinel or between the last cell and the sentinel.
+Type declaration can look like this in pseudo-code</p>
+
+<pre><code>cellule
+{
+    Value value;
+    cellule* next;
+    cellule* previous;
+};
+
+cursor
+{
+    cellule* after;
+    cellule* before;
+};
+
+CDLinkedList
+{
+    cellule* racine;//sentinel
+    cellule* cursorAfter;
+    cellule* cursorBefore;
+    ......
+    .....
+};
+
+
+</code></pre>
+
+<p><img src="https://raw.githubusercontent.com/sidsonAidson/doubly_linked_list/master/img/img3.png" alt="alt tag"></p>
+
+<p>CDLinkedList is iterable and can be used with for..of :</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">let</span> myList <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">CDLinkedList</span>();
+<span class="pl-k">.........</span>..
+<span class="pl-k">............</span>.
+<span class="pl-k">for</span>(<span class="pl-k">let</span> elem <span class="pl-k">of</span> myList)
+{
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(elem)
+}
+<span class="pl-k">...</span></pre></div>
+
+<ul>
+<li>Tags: list, array, linked list</li>
+</ul>
+
+<h2>
+<a id="performance" class="anchor" href="#performance" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Performance</h2>
+
+<p>Comparison between Array and CDLinkedList.
+The exercise consists in creating a sequence of size "length" and then removing the first element from it until it becomes empty ('Shift Method');
+See the folder '/ example /'
+Here are the results:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">............</span>
+<span class="pl-k">let</span> b <span class="pl-k">=</span> [];
+<span class="pl-k">for</span>(<span class="pl-k">let</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> length;i<span class="pl-k">++</span>)
+{
+    <span class="pl-smi">b</span>.<span class="pl-c1">push</span>({index<span class="pl-k">:</span>i});
+}
+<span class="pl-k">for</span>(<span class="pl-k">let</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> length ;i<span class="pl-k">++</span>)
+{
+   <span class="pl-smi">b</span>.<span class="pl-c1">shift</span>();
+}
+<span class="pl-k">.........</span>
+
+<span class="pl-k">let</span> a <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">CDLinkedList</span>();
+<span class="pl-k">for</span>(<span class="pl-k">let</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> length;i<span class="pl-k">++</span>)
+{
+    <span class="pl-smi">a</span>.<span class="pl-c1">push</span>({index<span class="pl-k">:</span>i});
+}
+<span class="pl-k">for</span>(<span class="pl-k">let</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> length;i<span class="pl-k">++</span>)
+{
+   <span class="pl-smi">a</span>.<span class="pl-c1">shift</span>();
+}
+<span class="pl-k">.........</span>..
+<span class="pl-c">/// Result</span>
+<span class="pl-c">//{NumberElem:{res1:res, res2:res}}</span>
+
+{<span class="pl-s"><span class="pl-pds">"</span>10.000<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>benchCDLinkedList<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">0</span>,<span class="pl-s"><span class="pl-pds">"</span>ms<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">7.252621</span>},<span class="pl-s"><span class="pl-pds">"</span>benchJsArray<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">0</span>,<span class="pl-s"><span class="pl-pds">"</span>ms<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">8.156139</span>}}}
+<span class="pl-k">......</span>..
+{<span class="pl-s"><span class="pl-pds">"</span>50.000<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>benchCDLinkedList<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">0</span>,<span class="pl-s"><span class="pl-pds">"</span>ms<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">15.221335</span>},<span class="pl-s"><span class="pl-pds">"</span>benchJsArray<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">0</span>,<span class="pl-s"><span class="pl-pds">"</span>ms<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">23.047444</span>}}}
+<span class="pl-k">......</span>..
+{<span class="pl-s"><span class="pl-pds">"</span>60.000<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>benchCDLinkedList<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">0</span>,<span class="pl-s"><span class="pl-pds">"</span>ms<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">20.891216</span>},<span class="pl-s"><span class="pl-pds">"</span>benchJsArray<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">11</span>,<span class="pl-s"><span class="pl-pds">"</span>ms<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">568.639012</span>}}}
+<span class="pl-k">.........</span>..
+{<span class="pl-s"><span class="pl-pds">"</span>160000<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>benchCDLinkedList<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">0</span>,<span class="pl-s"><span class="pl-pds">"</span>ms<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">133.833382</span>},<span class="pl-s"><span class="pl-pds">"</span>benchJsArray<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">76</span>,<span class="pl-s"><span class="pl-pds">"</span>ms<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">11.752886</span>}}}
+<span class="pl-k">.........</span>..
+{<span class="pl-s"><span class="pl-pds">"</span>190.000<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>benchCDLinkedList<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">0</span>,<span class="pl-s"><span class="pl-pds">"</span>ms<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">134.712147</span>},<span class="pl-s"><span class="pl-pds">"</span>benchJsArray<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">109</span>,<span class="pl-s"><span class="pl-pds">"</span>ms<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">837.268698</span>}}}
+<span class="pl-k">......</span>..
+{<span class="pl-s"><span class="pl-pds">"</span>1.700.000<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>benchCDLinkedList<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">1</span>,<span class="pl-s"><span class="pl-pds">"</span>ms<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">62.657239</span>},<span class="pl-s"><span class="pl-pds">"</span>benchJsArray<span class="pl-pds">"</span></span><span class="pl-k">:</span>{timeOut}}}
+<span class="pl-k">......</span>..
+{<span class="pl-s"><span class="pl-pds">"</span>3.000.000<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>benchCDLinkedList<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">2</span>,<span class="pl-s"><span class="pl-pds">"</span>ms<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">144.959251</span>},<span class="pl-s"><span class="pl-pds">"</span>benchJsArray<span class="pl-pds">"</span></span><span class="pl-k">:</span>{timeOut}}}
+<span class="pl-k">......</span>..
+{<span class="pl-s"><span class="pl-pds">"</span>4.600.000<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>benchCDLinkedList<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">3</span>,<span class="pl-s"><span class="pl-pds">"</span>ms<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">12.921694</span>},<span class="pl-s"><span class="pl-pds">"</span>benchJsArray<span class="pl-pds">"</span></span><span class="pl-k">:</span>{timeOut}}}
+<span class="pl-k">......</span>..
+{<span class="pl-s"><span class="pl-pds">"</span>5300000<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>benchCDLinkedList<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">4</span>,<span class="pl-s"><span class="pl-pds">"</span>ms<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">207.52613</span>},<span class="pl-s"><span class="pl-pds">"</span>benchJsArray<span class="pl-pds">"</span></span><span class="pl-k">:</span>{timeOut}}}
+<span class="pl-k">......</span>..
+{<span class="pl-s"><span class="pl-pds">"</span>6.700.000<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>benchCDLinkedList<span class="pl-pds">"</span></span><span class="pl-k">:</span>{<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">5</span>,<span class="pl-s"><span class="pl-pds">"</span>ms<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">5.378216</span>},<span class="pl-s"><span class="pl-pds">"</span>benchJsArray<span class="pl-pds">"</span></span><span class="pl-k">:</span>{timeOut}}}
+
+</pre></div>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<pre><code>npm install doubly_linked_list
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<div class="highlight highlight-source-js"><pre>
+<span class="pl-k">let</span> manager <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>doubly_linked_list<span class="pl-pds">'</span></span>);
+
+<span class="pl-k">let</span> CDLinkedList <span class="pl-k">=</span> <span class="pl-smi">manager</span>.<span class="pl-smi">CDLinkedList</span>;
+<span class="pl-k">let</span> Cursor <span class="pl-k">=</span> <span class="pl-smi">manager</span>.<span class="pl-smi">Cursor</span>;
+<span class="pl-k">let</span> Cellule <span class="pl-k">=</span> <span class="pl-smi">manager</span>.<span class="pl-smi">Cellule</span>;
+
+<span class="pl-k">let</span> a <span class="pl-k">=</span>  <span class="pl-smi">CDLinkedList</span>.<span class="pl-en">from</span>(<span class="pl-s"><span class="pl-pds">'</span>sidson aidson<span class="pl-pds">'</span></span>, (<span class="pl-smi">el</span>) <span class="pl-k">=&gt;</span> {
+    <span class="pl-k">return</span> <span class="pl-smi">el</span>.<span class="pl-c1">charCodeAt</span>(<span class="pl-c1">0</span>);
+});
+<span class="pl-smi">a</span>.<span class="pl-en">log</span>();
+<span class="pl-smi">a</span>.<span class="pl-en">insertAtEndSpread</span>([<span class="pl-c1">19</span>,<span class="pl-c1">20</span>,<span class="pl-c1">21</span>,<span class="pl-c1">22</span>]);
+<span class="pl-smi">a</span>.<span class="pl-en">log</span>();
+
+<span class="pl-smi">a</span>.<span class="pl-en">moveCursorToNext</span>();
+<span class="pl-smi">a</span>.<span class="pl-en">moveCursorToNext</span>();
+
+<span class="pl-smi">a</span>.<span class="pl-en">insertAfterCursor</span>(<span class="pl-c1">2</span>);
+<span class="pl-smi">a</span>.<span class="pl-en">insertAfterCursor</span>(<span class="pl-c1">3</span>);
+
+<span class="pl-smi">a</span>.<span class="pl-en">log</span>();
+
+<span class="pl-smi">a</span>.<span class="pl-en">moveCursorAtIndex</span>(<span class="pl-c1">3</span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">a</span>.<span class="pl-smi">cursorBefore</span>.<span class="pl-c1">value</span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">a</span>.<span class="pl-smi">cursorAfter</span>.<span class="pl-c1">value</span>);
+<span class="pl-smi">a</span>.<span class="pl-en">insertAfterCursor</span>(<span class="pl-c1">0</span>);
+<span class="pl-smi">a</span>.<span class="pl-en">log</span>();
+<span class="pl-smi">a</span>.<span class="pl-en">setAtIndex</span>({},<span class="pl-c1">0</span>);
+<span class="pl-smi">a</span>.<span class="pl-en">log</span>();
+
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">a</span>.<span class="pl-en">getAtIndex</span>(<span class="pl-c1">0</span>));
+</pre></div>
+
+<h2>
+<a id="api" class="anchor" href="#api" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>API</h2>
+
+<p>Several of Array method are implemeted for CDLinkedList and take same params like their namesake Array method</p>
+
+<h3>
+<a id="method" class="anchor" href="#method" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Method</h3>
+
+<div class="highlight highlight-source-js"><pre>
+.<span class="pl-smi">concat</span>,
+.<span class="pl-smi">every</span>,
+.<span class="pl-smi">fill</span>,
+.<span class="pl-smi">filter</span>,
+.<span class="pl-smi">find</span>,
+.<span class="pl-smi">findIndex</span>,
+.<span class="pl-smi">forEach</span>,
+.<span class="pl-smi">includes</span>,
+.<span class="pl-smi">indexOf</span>,
+.<span class="pl-smi">lastIndexOf</span>,
+.<span class="pl-smi">map</span>,
+.<span class="pl-smi">pop</span>,
+.<span class="pl-smi">push</span>,
+.<span class="pl-smi">reduce</span>,
+.<span class="pl-smi">reduceRight</span>,
+.<span class="pl-smi">shift</span>,
+.<span class="pl-smi">slice</span>,
+.<span class="pl-smi">some</span>,
+.<span class="pl-smi">sort</span>,
+.<span class="pl-smi">unshift</span></pre></div>
+
+<h2>
+<a id="aditional-addition" class="anchor" href="#aditional-addition" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aditional addition:</h2>
+
+<div class="highlight highlight-source-js"><pre>.<span class="pl-smi">allIndexOf</span>
+.<span class="pl-smi">toArray</span>
+<span class="pl-k">::</span><span class="pl-en">from</span>(iterable) <span class="pl-c">// static method CDLinkedList.from([1,2,3]) return new Instance of CDLinkedList with predifined value</span></pre></div>
+
+<h4>
+<a id="insertaftercursorvalue" class="anchor" href="#insertaftercursorvalue" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.insertAfterCursor(value)</h4>
+
+<ul>
+<li>Insert value after cursor position</li>
+</ul>
+
+<pre><code>let a =  CDLinkedList.from([2,3,4]);
+a.log(); // List &lt;2, 3, 4&gt;
+a.moveCursorAtEnd();
+a.insertAfterCursor(5);
+a.log();// List &lt;2, 3, 4, 5&gt;
+</code></pre>
+
+<h4>
+<a id="insertatendvalue" class="anchor" href="#insertatendvalue" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.insertAtEnd(value)</h4>
+
+<ul>
+<li>equivalent of <code>push</code> method</li>
+</ul>
+
+<pre><code>let a =  CDLinkedList.from([2,3,4]);
+a.log();//List &lt;2, 3, 4&gt;
+a.moveCursorAtIndex(2);
+a.insertAtEnd(8);// equivalent of a.push(8)
+a.log();// List &lt;2, 3, 4, 8&gt;
+
+</code></pre>
+
+<h4>
+<a id="insertatendspreaditerablevalue-fonctionmap-thisargs" class="anchor" href="#insertatendspreaditerablevalue-fonctionmap-thisargs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.insertAtEndSpread(iterableValue, [[fonctionMap],[ thisArgs]])</h4>
+
+<ul>
+<li>insert multiple value at end</li>
+</ul>
+
+<pre><code>let a =  CDLinkedList.from([2,3,4]);
+a.log();//List &lt;2, 3, 4&gt;
+a.moveCursorAtIndex(2);
+a.insertAtEnd([8,9,10]);
+a.log();// List &lt;2, 3, 4, 8,9,10&gt;
+a.insertAtEndSpread([8,9,10], (el) =&gt; {
+    return String(el);
+});
+a.log();// List &lt;2, 3, 4, 8,9,10, '8','9','10'&gt;
+
+</code></pre>
+
+<h4>
+<a id="insertatbeginvalue" class="anchor" href="#insertatbeginvalue" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.insertAtBegin(value)</h4>
+
+<ul>
+<li>insert new elem at begin of list</li>
+</ul>
+
+<pre><code>let a =  CDLinkedList.from([2,3,4]);
+a.log();//List &lt;2, 3, 4&gt;
+a.moveCursorAtIndex(2);
+a.insertAtBegin(8);
+a.log();// List &lt;8,2, 3, 4&gt;
+
+</code></pre>
+
+<h4>
+<a id="insertatbeginspreaditerablevalue-fonctionmap-thisargs" class="anchor" href="#insertatbeginspreaditerablevalue-fonctionmap-thisargs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.insertAtBeginSpread(iterableValue, [[fonctionMap],[ thisArgs]])</h4>
+
+<ul>
+<li>insert multiple value at begin of list</li>
+</ul>
+
+<pre><code>let a =  CDLinkedList.from([2,3,4]);
+a.log();//List &lt;2, 3, 4&gt;
+a.moveCursorAtIndex(2);
+a.insertAtBeginSpread('sidson aidson', (el) =&gt; {
+   return el.charCodeAt(0)
+});
+a.log(); // List &lt;115, 105, 100, 115, 111, 110, 32, 97, 105, 100, 115, 111, 110, 2, 3, 4&gt;
+
+</code></pre>
+
+<h4>
+<a id="insertatindexvalue-index" class="anchor" href="#insertatindexvalue-index" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.insertAtIndex(value, index)</h4>
+
+<ul>
+<li>insert new elem at given index .Accept negative index</li>
+</ul>
+
+<pre><code>let a =  CDLinkedList.from([2,3,4]);
+a.log();//List &lt;2, 3, 4&gt;
+a.insertAtIndex({h:12,b:23,l:45},2);
+a.log();// List &lt;2, 3, {h:12,b:23,l:45}, 4&gt;
+
+</code></pre>
+
+<h4>
+<a id="insertatindexspreaditerablevalue-indexfonctionmap-thisargs" class="anchor" href="#insertatindexspreaditerablevalue-indexfonctionmap-thisargs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.insertAtIndexSpread(iterableValue, index,[[fonctionMap],[ thisArgs]])</h4>
+
+<ul>
+<li>insert new elem at given index .Accept negative index</li>
+</ul>
+
+<pre><code>let a =  CDLinkedList.from([2,3,4]);
+a.log();//List &lt;2, 3, 4&gt;
+a.insertAtIndexSpread({h:12,b:23,l:45},2);
+a.log();// List &lt;2, 3, 12,23,45, 4&gt;
+// not output diff between a.insertAtIndex({h:12,b:23,l:45},2);
+// and a.insertAtIndexSpread({h:12,b:23,l:45},2);
+
+</code></pre>
+
+<h3>
+<a id="removeaftercursor" class="anchor" href="#removeaftercursor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.removeAfterCursor()</h3>
+
+<ul>
+<li>remove element after cursor</li>
+</ul>
+
+<h3>
+<a id="removeatend" class="anchor" href="#removeatend" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.removeAtEnd()</h3>
+
+<ul>
+<li>remove element at end of list(last). like <code>pop</code> method but return <code>undefined</code>
+</li>
+</ul>
+
+<h3>
+<a id="removeatbegin" class="anchor" href="#removeatbegin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.removeAtBegin()</h3>
+
+<ul>
+<li>remove element at begin of list(first). like <code>shift</code> method but return <code>undefined</code>
+</li>
+</ul>
+
+<h3>
+<a id="removeatindexindex" class="anchor" href="#removeatindexindex" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.removeAtIndex(index)</h3>
+
+<ul>
+<li>remove element at index of list .</li>
+</ul>
+
+<h3>
+<a id="clear" class="anchor" href="#clear" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.clear()</h3>
+
+<ul>
+<li>clear list</li>
+</ul>
+
+<h3>
+<a id="movecursoratindexindex" class="anchor" href="#movecursoratindexindex" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.moveCursorAtIndex(index)</h3>
+
+<ul>
+<li>move cursor at given index</li>
+</ul>
+
+<h3>
+<a id="getcursor" class="anchor" href="#getcursor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.getCursor()</h3>
+
+<ul>
+<li>return current cursor state</li>
+</ul>
+
+<h3>
+<a id="setcursorcursor" class="anchor" href="#setcursorcursor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.setCursor(cursor)</h3>
+
+<ul>
+<li>restore cursor state</li>
+</ul>
+
+<h3>
+<a id="movecursoratend" class="anchor" href="#movecursoratend" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.moveCursorAtEnd()</h3>
+
+<ul>
+<li>move cursor at end of list</li>
+</ul>
+
+<h3>
+<a id="movecursoratbegin" class="anchor" href="#movecursoratbegin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.moveCursorAtBegin()</h3>
+
+<ul>
+<li>move cursor at begin of list</li>
+</ul>
+
+<h3>
+<a id="movecursortonext" class="anchor" href="#movecursortonext" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.moveCursorToNext()</h3>
+
+<ul>
+<li>move cursor to next elem</li>
+</ul>
+
+<h3>
+<a id="movecursortoprevious" class="anchor" href="#movecursortoprevious" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.moveCursorToPrevious()</h3>
+
+<ul>
+<li>move cursor to previous elem</li>
+</ul>
+
+<h3>
+<a id="setaftercursor" class="anchor" href="#setaftercursor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.setAfterCursor()</h3>
+
+<ul>
+<li>set value of element after cursor</li>
+</ul>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">let</span> a <span class="pl-k">=</span>  <span class="pl-smi">CDLinkedList</span>.<span class="pl-en">from</span>([<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>]);
+<span class="pl-smi">a</span>.<span class="pl-en">log</span>();<span class="pl-c">//List &lt;2, 3, 4&gt;</span>
+<span class="pl-smi">a</span>.<span class="pl-en">insertAtIndex</span>({},<span class="pl-c1">2</span>);
+<span class="pl-smi">a</span>.<span class="pl-en">log</span>();<span class="pl-c">// List &lt;2, 3, {}, 4&gt;</span>
+<span class="pl-smi">a</span>.<span class="pl-en">moveCursorAtIndex</span>(<span class="pl-c1">0</span>);
+<span class="pl-smi">a</span>.<span class="pl-en">setAfterCursor</span>(<span class="pl-s"><span class="pl-pds">'</span>Hello<span class="pl-pds">'</span></span>);
+<span class="pl-smi">a</span>.<span class="pl-en">log</span>()<span class="pl-c">//List &lt;'Hello', 3, 2, {}&gt;</span></pre></div>
+
+<h3>
+<a id="getaftercursor" class="anchor" href="#getaftercursor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.getAfterCursor()</h3>
+
+<ul>
+<li>get elem after cursor</li>
+</ul>
+
+<h3>
+<a id="getatindex" class="anchor" href="#getatindex" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.getAtIndex()</h3>
+
+<ul>
+<li>get elem at index</li>
+</ul>
+
+<h3>
+<a id="getatbegin" class="anchor" href="#getatbegin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.getAtBegin()</h3>
+
+<ul>
+<li>like <code>shift</code> but don't remove elem</li>
+</ul>
+
+<h3>
+<a id="getatend" class="anchor" href="#getatend" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.getAtEnd()</h3>
+
+<ul>
+<li>like <code>pop</code> but don't remove elem</li>
+</ul>
+
+<h3>
+<a id="setatindex" class="anchor" href="#setatindex" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.setAtIndex()</h3>
+
+<h3>
+<a id="setatend" class="anchor" href="#setatend" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.setAtEnd()</h3>
+
+<h3>
+<a id="setatbegin" class="anchor" href="#setatbegin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.setAtBegin()</h3>
+
+<h3>
+<a id="log" class="anchor" href="#log" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.log()</h3>
+
+<ul>
+<li>print list on stdout</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/sidsonAidson/doubly_linked_list">Doubly linked list</a> is maintained by <a href="https://github.com/sidsonAidson">sidsonAidson</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
