@@ -120,14 +120,14 @@ for(let i = 0; i < length;i++)
 
 ##Installation
 ```
-npm install doubly_linked_list
+npm install fast-doubly-linked-list
 ```
 
 ##Usage
 
 ``` javascript
 
-let manager = require('doubly_linked_list');
+let manager = require('fast-doubly-linked-list');
 
 let CDLinkedList = manager.CDLinkedList;
 let Cursor = manager.Cursor;

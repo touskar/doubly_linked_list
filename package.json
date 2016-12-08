@@ -1,5 +1,5 @@
 {
-  "name": "doubly_linked_list",
+  "name": "fast-doubly-linked-list",
   "version": "1.0.0",
   "description": "Circular Doubly linked list implementation",
   "main": "index.js",
