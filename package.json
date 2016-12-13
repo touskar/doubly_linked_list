@@ -1,6 +1,6 @@
 {
   "name": "fast-doubly-linked-list",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Circular Doubly linked list implementation",
   "main": "index.js",
   "directories": {
