@@ -160,6 +160,42 @@ a.log();
 console.log(a.getAtIndex(0));
 
 ```
+#####Used like LIF0:
+``` javascript
+
+let Lifo = require('fast-doubly-linked-list').CDLinkedList;
+let myLifo = new Lifo();
+
+myLifo.push(1);
+myLifo.push(2);
+console.log(myLifo.pop());// 2
+```
+
+#####Used like FIFO
+
+``` javascript
+let Fifo = require('fast-doubly-linked-list').CDLinkedList;
+let myFifo = new Fifo();
+
+myFifo.push(1);
+myFifo.push(2);
+console.log(myFifo.shift());// 1
+```
+
+#####Used like Deque
+
+``` javascript
+let Deque = require('fast-doubly-linked-list').CDLinkedList;
+let myDeque = new Deque();
+
+myDeque.push(1);
+myDeque.push(2);
+myDeque.unshift(0);
+myDeque.pop();
+myDeque.log();//List <0, 1>
+```
+
+
 ##API
 Several of Array method are implemeted for CDLinkedList and take same params like their namesake Array method
 ###Method
@@ -314,7 +350,7 @@ a.log();// List <2, 3, 12,23,45, 4>
 ###.moveCursorToPrevious()
 + move cursor to previous elem
 
-###.setAfterCursor()
+###.setAfterCursor(value)
 + set value of element after cursor
 ``` javascript
 let a =  CDLinkedList.from([2,3,4]);
@@ -330,7 +366,7 @@ a.log()//List <'Hello', 3, 2, {}>
 + get elem after cursor
 
 
-###.getAtIndex()
+###.getAtIndex(index)
 + get elem at index
 
 ###.getAtBegin()
@@ -339,13 +375,14 @@ a.log()//List <'Hello', 3, 2, {}>
 ###.getAtEnd()
 + like ```pop``` but don't remove elem
 
-###.setAtIndex()
+###.setAtIndex(value)
 
-###.setAtEnd()
+###.setAtEnd(value)
 
-###.setAtBegin()
+###.setAtBegin(value)
 
 
 ###.log()
 + print list on stdout
+
 
