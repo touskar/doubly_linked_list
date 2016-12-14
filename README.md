@@ -199,29 +199,87 @@ myDeque.log();//List <0, 1>
 ##API
 Several of Array method are implemeted for CDLinkedList and take same params like their namesake Array method
 ###Method
-``` javascript
 
-.concat,
+```
+.concat
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat">See on mdn</a>
+```
 .every,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every">See on mdn</a>
+```
 .fill,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill">See on mdn</a>
+```
 .filter,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">See on mdn</a>
+```
 .find,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find">See on mdn</a>
+```
 .findIndex,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findindex">See on mdn</a>
+```
 .forEach,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/foreach">See on mdn</a>
+```
 .includes,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">See on mdn</a>
+```
 .indexOf,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexof">See on mdn</a>
+```
 .lastIndexOf,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/lastindexof">See on mdn</a>
+```
 .map,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">See on mdn</a>
+```
 .pop,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop">See on mdn</a>
+```
 .push,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push">See on mdn</a>
+```
 .reduce,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce">See on mdn</a>
+```
 .reduceRight,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight">See on mdn</a>
+```
 .shift,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift">See on mdn</a>
+```
 .slice,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice">See on mdn</a>
+```
 .some,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some">See on mdn</a>
+```
 .sort,
+```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">See on mdn</a>
+```
 .unshift
 ```
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift">See on mdn</a>
 
 ##Aditional addition:
 
@@ -384,5 +442,6 @@ a.log()//List <'Hello', 3, 2, {}>
 
 ###.log()
 + print list on stdout
+
 
 
