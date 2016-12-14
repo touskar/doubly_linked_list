@@ -27,8 +27,7 @@ The principle of a doubly-linked list is to keep for each element of the list a 
 
 <p><a href="http://sidsonaidson.github.io/doubly_linked_list/">CDLinkedList</a></p>
 
-<p><img src="">
-<img src="https://raw.githubusercontent.com/sidsonAidson/doubly_linked_list/master/img/img2.png" alt="alt tag"></p>
+<p><img src="https://raw.githubusercontent.com/sidsonAidson/doubly_linked_list/master/img/img2.png" alt="alt tag"></p>
 
 <p>In this implementation we create special element, which will be the root of our list (also called sentinel).
 <a href="https://en.wikipedia.org/wiki/Sentinel_node">Sentinel on wikiPedia</a></p>
@@ -178,6 +177,39 @@ Here are the results:</p>
 
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">a</span>.<span class="pl-en">getAtIndex</span>(<span class="pl-c1">0</span>));
 </pre></div>
+
+<h5>
+<a id="used-like-lif0" class="anchor" href="#used-like-lif0" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Used like LIF0:</h5>
+
+<div class="highlight highlight-source-js"><pre>
+<span class="pl-k">let</span> Lifo <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>fast-doubly-linked-list<span class="pl-pds">'</span></span>).<span class="pl-smi">CDLinkedList</span>;
+<span class="pl-k">let</span> myLifo <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Lifo</span>();
+
+<span class="pl-smi">myLifo</span>.<span class="pl-c1">push</span>(<span class="pl-c1">1</span>);
+<span class="pl-smi">myLifo</span>.<span class="pl-c1">push</span>(<span class="pl-c1">2</span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">myLifo</span>.<span class="pl-c1">pop</span>());<span class="pl-c">// 2</span></pre></div>
+
+<h5>
+<a id="used-like-fifo" class="anchor" href="#used-like-fifo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Used like FIFO</h5>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">let</span> Fifo <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>fast-doubly-linked-list<span class="pl-pds">'</span></span>).<span class="pl-smi">CDLinkedList</span>;
+<span class="pl-k">let</span> myFifo <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Fifo</span>();
+
+<span class="pl-smi">myFifo</span>.<span class="pl-c1">push</span>(<span class="pl-c1">1</span>);
+<span class="pl-smi">myFifo</span>.<span class="pl-c1">push</span>(<span class="pl-c1">2</span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">myFifo</span>.<span class="pl-c1">shift</span>());<span class="pl-c">// 1</span></pre></div>
+
+<h5>
+<a id="used-like-deque" class="anchor" href="#used-like-deque" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Used like Deque</h5>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">let</span> Deque <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>fast-doubly-linked-list<span class="pl-pds">'</span></span>).<span class="pl-smi">CDLinkedList</span>;
+<span class="pl-k">let</span> myDeque <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Deque</span>();
+
+<span class="pl-smi">myDeque</span>.<span class="pl-c1">push</span>(<span class="pl-c1">1</span>);
+<span class="pl-smi">myDeque</span>.<span class="pl-c1">push</span>(<span class="pl-c1">2</span>);
+<span class="pl-smi">myDeque</span>.<span class="pl-c1">unshift</span>(<span class="pl-c1">0</span>);
+<span class="pl-smi">myDeque</span>.<span class="pl-c1">pop</span>();
+<span class="pl-smi">myDeque</span>.<span class="pl-en">log</span>();<span class="pl-c">//List &lt;0, 1&gt;</span></pre></div>
 
 <h2>
 <a id="api" class="anchor" href="#api" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>API</h2>
@@ -413,7 +445,7 @@ a.log();// List &lt;2, 3, 12,23,45, 4&gt;
 </ul>
 
 <h3>
-<a id="setaftercursor" class="anchor" href="#setaftercursor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.setAfterCursor()</h3>
+<a id="setaftercursorvalue" class="anchor" href="#setaftercursorvalue" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.setAfterCursor(value)</h3>
 
 <ul>
 <li>set value of element after cursor</li>
@@ -435,7 +467,7 @@ a.log();// List &lt;2, 3, 12,23,45, 4&gt;
 </ul>
 
 <h3>
-<a id="getatindex" class="anchor" href="#getatindex" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.getAtIndex()</h3>
+<a id="getatindexindex" class="anchor" href="#getatindexindex" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.getAtIndex(index)</h3>
 
 <ul>
 <li>get elem at index</li>
@@ -456,13 +488,13 @@ a.log();// List &lt;2, 3, 12,23,45, 4&gt;
 </ul>
 
 <h3>
-<a id="setatindex" class="anchor" href="#setatindex" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.setAtIndex()</h3>
+<a id="setatindexvalue" class="anchor" href="#setatindexvalue" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.setAtIndex(value)</h3>
 
 <h3>
-<a id="setatend" class="anchor" href="#setatend" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.setAtEnd()</h3>
+<a id="setatendvalue" class="anchor" href="#setatendvalue" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.setAtEnd(value)</h3>
 
 <h3>
-<a id="setatbegin" class="anchor" href="#setatbegin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.setAtBegin()</h3>
+<a id="setatbeginvalue" class="anchor" href="#setatbeginvalue" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.setAtBegin(value)</h3>
 
 <h3>
 <a id="log" class="anchor" href="#log" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.log()</h3>
