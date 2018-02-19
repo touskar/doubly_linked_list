@@ -47,7 +47,8 @@ CDLinkedList
 
 ```
 
-![alt tag](https://raw.githubusercontent.com/sidsonAidson/doubly_linked_list/master/img/img3.png)
+![alt tag](https://drive.google.com/file/d/1lP8_efdPD6LCENaJbL6EFmqzfyHWpZ1N/view?usp=sharing)
+
 
 CDLinkedList is iterable and can be used with for..of :
 
